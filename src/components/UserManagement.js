@@ -1,14 +1,15 @@
 import Main from './Main';
 import { Container, Row, Col } from 'react-bootstrap';
 import './UserManagement.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { openPopup } from '../features/popup/popupSlice';
 import Popup from './Popup';
 const UserManagement = () => {
+  const showPopup = useSelector((state) => state.popup.show);
   const dispatch = useDispatch();
   return (
     <>
-      <Popup />
+      {showPopup && <Popup />}
       <Container fluid className="user-management">
         <Row>
           <Col md={3} className="bg-light">

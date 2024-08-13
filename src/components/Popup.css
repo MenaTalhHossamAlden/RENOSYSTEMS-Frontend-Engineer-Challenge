@@ -30,3 +30,55 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.popup .body {
+  border-bottom: 1px solid #dee1e9;
+}
+
+.popup .body .add-field {
+  margin: 24px;
+}
+
+.popup .body .add-field p {
+  color: #28344d;
+  font-weight: 700;
+}
+
+.popup .body .add-field input,
+.popup .body .add-field select {
+  width: 100%;
+  height: 45px;
+  padding: 10px;
+  border-radius: 5px;
+  color: #919fb3;
+  border: 1px solid #dee1e9;
+}
+
+.popup .footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+}
+.popup .footer p {
+  color: #28344d;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.popup .footer button {
+  color: #28344d;
+  border-radius: 5px;
+  padding: 5px 15px;
+  margin-left: 10px;
+  font-weight: 500;
+  border: 1px solid #919fb3;
+}
+
+.popup .footer button:nth-child(2) {
+  background: #00a86b;
+  color: white;
+  font-weight: 500;
+}
