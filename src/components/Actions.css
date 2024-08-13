@@ -31,3 +31,7 @@
   color: #4f576d;
   margin-right: 10px;
 }
+
+.actions .last-action {
+  margin-left: auto;
+}

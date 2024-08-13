@@ -30,6 +30,9 @@ const Actions = () => {
       <div className="un-selected" onClick={() => dispatch(unselectAll())}>
         <p>Unselect all</p>
       </div>
+      <div className="action last-action">
+        <i class="fas fa-download"></i>
+      </div>
     </div>
   );
 };
