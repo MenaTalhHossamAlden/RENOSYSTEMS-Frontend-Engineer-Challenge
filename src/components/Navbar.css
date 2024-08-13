@@ -1,0 +1,21 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  padding: 15px 0;
+  border-bottom: 1px solid #dee1e9;
+}
+
+.navbar .navbar-left {
+  display: flex;
+}
+
+.navbar p {
+  margin: 0 4px;
+  color: #535865;
+}
+
+.navbar p:first-child {
+  font-weight: 700;
+}
