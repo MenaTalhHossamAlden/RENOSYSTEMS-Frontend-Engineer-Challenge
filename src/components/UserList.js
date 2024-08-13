@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './UserList.css';
 import { useSelector } from 'react-redux';
 const UserList = () => {
-  const users = useSelector((state) => state.users);
+  const users = useSelector((state) => state.users.users);
   const getRandomColor = () => {
     const letters = '0123456789ABCDEF';
     let color = '#';

@@ -1,0 +1,82 @@
+.inputs {
+  display: flex;
+  margin: 25px;
+  background: white;
+  align-items: center;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #e2e6ed;
+  margin-right: 8px;
+}
+
+.field-input {
+  font-size: 16px;
+  color: #96a3b7;
+  margin-left: 8px;
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+#search span {
+  color: #8c919e;
+}
+
+#search {
+  width: 300px;
+}
+
+#username {
+  width: 150px;
+}
+
+#status,
+#creation-date {
+  position: relative;
+  width: 170px;
+}
+
+#status .field-input,
+#creation-date .field-input,
+#creation-date .creation-date-default {
+  color: black;
+  font-weight: bold;
+  width: 100%;
+}
+
+#status span,
+#creation-date span:first-child {
+  position: absolute;
+  width: fit-content;
+  height: fit-content;
+  padding: 2px;
+  background: white;
+  font-size: 12px;
+  top: -12px;
+  color: #96a3b7;
+}
+
+#creation-date {
+  position: relative;
+}
+
+#creation-date .field-input {
+  color: transparent;
+  cursor: pointer;
+}
+
+#creation-date .creation-date-default {
+  position: absolute;
+  left: 17px;
+  width: 100px;
+  background: white;
+}
+
+.inputs .filters {
+  color: #279cfc;
+}
