@@ -45,7 +45,7 @@ const Inputs = () => {
           onChange={(e) => dispatch(setCreationDate(e.target.value))}
         />
       </div>
-      <div className='filters'>All Filters</div>
+      <div className="filters">All Filters</div>
     </div>
   );
 };

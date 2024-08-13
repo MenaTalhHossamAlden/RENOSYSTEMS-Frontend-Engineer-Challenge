@@ -1,20 +1,11 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './UserList.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSelected } from '../features/users/usersSlice';
 const UserList = () => {
+  const dispatch = useDispatch();
   const users = useSelector((state) => state.users.users);
-  const getRandomColor = () => {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    const r = parseInt(color.slice(1, 3), 16);
-    const g = parseInt(color.slice(3, 5), 16);
-    const b = parseInt(color.slice(5, 7), 16);
-    return `rgba(${r}, ${g}, ${b}, 0.2)`;
-  };
   return (
     <table className="table table-hover user-list">
       <thead>
@@ -29,11 +20,21 @@ const UserList = () => {
       </thead>
       <tbody>
         {users.map((user) => {
-          const backgroundColor = getRandomColor();
+          const backgroundColor = user.color;
           return (
             <tr key={user.id}>
               <td className="name">
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  onChange={() =>
+                    dispatch(
+                      setSelected({
+                        userId: user.id,
+                        isSelected: !user.isSelected,
+                      })
+                    )
+                  }
+                />
                 <div
                   className="initials-circle"
                   style={{ background: backgroundColor }}
