@@ -22,10 +22,11 @@ const UserList = () => {
         {users.map((user) => {
           const backgroundColor = user.color;
           return (
-            <tr key={user.id}>
+            <tr key={user.id} className={user.isSelected ? 'selected' : ''}>
               <td className="name">
                 <input
                   type="checkbox"
+                  checked={user.isSelected}
                   onChange={() =>
                     dispatch(
                       setSelected({

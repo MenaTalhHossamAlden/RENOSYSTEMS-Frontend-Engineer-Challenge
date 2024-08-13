@@ -24,8 +24,15 @@ const usersSlice = createSlice({
       }
       state.nSelected = state.users.filter((user) => user.isSelected).length;
     },
+    unselectAll: (state) => {
+      state.users.forEach((user) => {
+        user.isSelected = false;
+      });
+      state.nSelected = 0;
+    },
   },
 });
 
-export const { setStatus, setCreationDate, setSelected } = usersSlice.actions;
+export const { setStatus, setCreationDate, setSelected, unselectAll } =
+  usersSlice.actions;
 export default usersSlice.reducer;
