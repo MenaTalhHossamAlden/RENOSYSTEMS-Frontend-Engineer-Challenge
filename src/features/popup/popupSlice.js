@@ -16,6 +16,11 @@ const popupSlice = createSlice({
     },
     closePopup: (state) => {
       state.show = false;
+      state.fullName = '';
+      state.userName = '';
+      state.email = '';
+      state.group = 'Choose User Group';
+      state.profile = 'Choose Profile';
     },
     setUserName: (state, action) => {
       state.userName = action.payload;
@@ -43,6 +48,7 @@ const popupSlice = createSlice({
 });
 export const {
   openPopup,
+  closePopup,
   setFullName,
   setUserName,
   setProfile,

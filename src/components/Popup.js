@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import './Popup.css';
 import {
+  closePopup,
   resetFields,
   setEmail,
   setFullName,
@@ -18,7 +19,10 @@ const Popup = () => {
       <div className="popup-window">
         <div className="header">
           <p>Add New User</p>
-          <i class="fas fa-times"></i>
+          <i
+            className="fas fa-times"
+            onClick={() => dispatch(closePopup())}
+          ></i>
         </div>
         <div className="body">
           <div className="add-field">
@@ -90,7 +94,7 @@ const Popup = () => {
         <div className="footer">
           <p onClick={() => dispatch(resetFields())}>Reset fields</p>
           <div>
-            <button>Cancel</button>
+            <button onClick={() => dispatch(closePopup())}>Cancel</button>
             <button>Add User</button>
           </div>
         </div>
