@@ -9,11 +9,11 @@ import {
   setProfile,
   setUserName,
 } from '../features/popup/popupSlice';
+import { addUser } from '../features/users/usersSlice';
 const Popup = () => {
   const dispatch = useDispatch();
-  const { fullName, userName, email, profile, group } = useSelector(
-    (state) => state.popup
-  );
+  const userData = useSelector((state) => state.popup);
+  const { fullName, userName, email, profile, group } = userData;
   return (
     <div className="popup">
       <div className="popup-window">
@@ -95,7 +95,9 @@ const Popup = () => {
           <p onClick={() => dispatch(resetFields())}>Reset fields</p>
           <div>
             <button onClick={() => dispatch(closePopup())}>Cancel</button>
-            <button>Add User</button>
+            <button onClick={() => dispatch(addUser({ ...userData }))}>
+              Add User
+            </button>
           </div>
         </div>
       </div>

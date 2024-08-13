@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import users from '../../fakeData';
+import users, { getRandomColor } from '../../fakeData';
 const initialState = {
   users: users(),
   status: 'any',
@@ -30,9 +30,23 @@ const usersSlice = createSlice({
       });
       state.nSelected = 0;
     },
+    addUser: (state, action) => {
+      const { fullName, userName, email, group, profile } = action.payload;
+      const newUser = {
+        id: Date.now(),
+        name: fullName,
+        username: userName,
+        email: email,
+        group: group,
+        status: profile,
+        createdOn: Date.now(),
+        color: getRandomColor(),
+      };
+      state.users = [newUser, ...state.users];
+    },
   },
 });
 
-export const { setStatus, setCreationDate, setSelected, unselectAll } =
+export const { setStatus, setCreationDate, setSelected, unselectAll, addUser } =
   usersSlice.actions;
 export default usersSlice.reducer;
