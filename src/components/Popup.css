@@ -1,0 +1,32 @@
+.popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+.popup .popup-window {
+  background: #f7fafb;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 550px;
+  max-width: 90%;
+  position: relative;
+}
+
+.popup .header {
+  font-size: 20px;
+  border-radius: 8px 8px 0 0;
+  background: #010e2d;
+  color: white;
+  font-weight: 500;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

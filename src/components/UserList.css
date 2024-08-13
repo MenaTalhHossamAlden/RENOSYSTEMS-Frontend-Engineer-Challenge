@@ -2,6 +2,12 @@
   width: 100%;
   border-radius: 24px;
 }
+
+.user-list th {
+  color: #9eaabd;
+  font-weight: 500;
+}
+
 .user-list th,
 .user-list td {
   text-align: left;
@@ -29,7 +35,7 @@
   border: 1px solid #cbd1da;
   border-radius: 5px;
   cursor: pointer;
-  margin-right: 8px;
+  margin-right: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,6 +48,11 @@
   font-size: 17px;
   color: white;
   display: none;
+}
+
+.user-list input[type='checkbox'].head-checkbox:checked:after {
+  content: '\f068';
+  display: block;
 }
 
 .user-list input[type='checkbox']:checked {

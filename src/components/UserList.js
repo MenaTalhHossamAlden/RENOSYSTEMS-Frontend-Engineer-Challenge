@@ -10,12 +10,27 @@ const UserList = () => {
     <table className="table table-hover user-list">
       <thead>
         <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Username</th>
-          <th scope="col">Email</th>
-          <th scope="col">Group</th>
-          <th scope="col">Status</th>
-          <th scope="col">Created On</th>
+          <th className="name">
+            <input
+              type="checkbox"
+              className="head-checkbox"
+              checked
+              // onChange={() =>
+              //   dispatch(
+              //     setSelected({
+              //       userId: user.id,
+              //       isSelected: !user.isSelected,
+              //     })
+              //   )
+              // }
+            />
+            Name
+          </th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Group</th>
+          <th>Status</th>
+          <th>Created On</th>
         </tr>
       </thead>
       <tbody>

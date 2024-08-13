@@ -1,8 +1,26 @@
+p {
+  margin: 0;
+  padding: 0;
+}
+
 .user-management {
   letter-spacing: -1px;
 }
 
-p {
-  margin: 0;
-  padding: 0;
+.user-management .header {
+  display: flex;
+  justify-content: space-between;
+  margin: 24px 0;
+}
+
+.user-management .header button {
+  padding: 5px 15px;
+  border-radius: 5px;
+  color: white;
+  background: #00a86b;
+  border: none;
+}
+
+.user-management .header button i {
+  margin-right: 8px;
 }
