@@ -1,0 +1,65 @@
+.user-list {
+  width: 100%;
+  border-radius: 24px;
+  
+}
+.user-list th,
+.user-list td {
+  text-align: left;
+  padding: 12px 15px;
+}
+
+.user-list th {
+  background-color: #f4f4f4;
+}
+
+.user-list .status {
+  font-weight: bold;
+}
+
+.user-list .name {
+  display: flex;
+  align-items: center;
+}
+
+.user-list input[type='checkbox'] {
+  appearance: none;
+  height: 24px;
+  width: 24px;
+  border: 1px solid #cbd1da;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-list input[type='checkbox']:after {
+  font-family: 'Font Awesome 5 Free';
+  content: '\f00c';
+  font-weight: 900;
+  font-size: 17px;
+  color: white;
+  display: none;
+}
+
+.user-list input[type='checkbox']:checked {
+  background-color: #0fac71;
+}
+
+.user-list input[type='checkbox']:checked:after {
+  display: block;
+}
+
+.initials-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #6c757d;
+  font-size: 14px;
+  margin-right: 8px;
+}
