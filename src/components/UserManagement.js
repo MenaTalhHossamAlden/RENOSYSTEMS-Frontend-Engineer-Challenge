@@ -18,7 +18,7 @@ const UserManagement = () => {
           </Col>
           <Col md={9} className="bg-light col">
             <Navbar />
-            <div className='user-management-body'>
+            <div className="user-management-body">
               <div className="header">
                 <h4>User Management</h4>
                 <button onClick={() => dispatch(openPopup())}>

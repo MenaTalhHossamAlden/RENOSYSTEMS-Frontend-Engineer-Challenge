@@ -21,6 +21,13 @@ const Navbar = () => {
         <p>{formattedDateWithSpace}</p>
         <p>{formattedTime}</p>
       </div>
+      <div className="navbar-right">
+        <i className="far fa-question-circle"></i>
+        <div className="notifications">
+          <div className="count">9+</div>
+          <i class="fas fa-bell"></i>
+        </div>
+      </div>
     </div>
   );
 };
