@@ -1,17 +1,29 @@
-import { setCreationDate, setStatus } from '../features/users/usersSlice';
+import {
+  filterUsers,
+  setCreationDate,
+  setStatus,
+  setSearchTerm,
+} from '../features/users/usersSlice';
 import './Inputs.css';
 import { useDispatch, useSelector } from 'react-redux';
 const Inputs = () => {
   const dispatch = useDispatch();
-  const status = useSelector((state) => state.users.status);
-  const creationDate = useSelector((state) => state.users.creationDate);
+  const { status, searchTerm, creationDate } = useSelector(
+    (state) => state.users
+  );
   return (
     <div className="inputs">
       <div className="field" id="search">
         <span>
           <i className="fas fa-search"></i>
         </span>
-        <input type="search" className="field-input" placeholder="Search..." />
+        <input
+          type="search"
+          className="field-input"
+          placeholder="Search..."
+          value={searchTerm}
+          onChange={(e) => dispatch(setSearchTerm(e.target.value))}
+        />
       </div>
       <div className="field" id="username">
         <input type="text" className="field-input" placeholder="User Name" />

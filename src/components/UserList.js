@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setSelected } from '../features/users/usersSlice';
 const UserList = () => {
   const dispatch = useDispatch();
-  const users = useSelector((state) => state.users.users);
+  const users = useSelector((state) => state.users.filteredUsers);
   return (
     <table className="table table-hover user-list">
       <thead>

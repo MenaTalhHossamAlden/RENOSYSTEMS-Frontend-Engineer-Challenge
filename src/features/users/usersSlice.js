@@ -9,6 +9,11 @@ const initialState = {
   creationDate: '',
   nSelected: 0,
   selectedUsers: [],
+  searchTerm: '',
+  filteredUsers: users().map((user) => ({
+    ...user,
+    isSelected: false,
+  })),
 };
 const usersSlice = createSlice({
   name: 'users',
@@ -16,6 +21,17 @@ const usersSlice = createSlice({
   reducers: {
     setStatus: (state, action) => {
       state.status = action.payload;
+    },
+    setSearchTerm: (state, action) => {
+      state.searchTerm = action.payload;
+      const searchTerm = action.payload;
+      if (!searchTerm) state.filteredUsers = state.users;
+      state.filteredUsers = state.users.filter(
+        (user) =>
+          user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          user.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          user.email.toLowerCase().includes(searchTerm.toLowerCase())
+      );
     },
     setCreationDate: (state, action) => {
       state.creationDate = action.payload;
@@ -73,5 +89,6 @@ export const {
   unselectAll,
   addUser,
   editUser,
+  setSearchTerm,
 } = usersSlice.actions;
 export default usersSlice.reducer;
