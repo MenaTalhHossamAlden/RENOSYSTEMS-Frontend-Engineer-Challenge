@@ -1,19 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 import users, { getRandomColor } from '../../fakeData';
+const usersWithSelected = users().map((user) => ({
+  ...user,
+  isSelected: false,
+}));
 const initialState = {
-  users: users().map((user) => ({
-    ...user,
-    isSelected: false,
-  })),
+  users: usersWithSelected,
   status: 'any',
   creationDate: '',
   nSelected: 0,
   selectedUsers: [],
   searchTerm: '',
-  filteredUsers: users().map((user) => ({
-    ...user,
-    isSelected: false,
-  })),
+  filteredUsers: usersWithSelected,
 };
 const usersSlice = createSlice({
   name: 'users',
@@ -39,8 +37,12 @@ const usersSlice = createSlice({
     setSelected: (state, action) => {
       const { userId, isSelected } = action.payload;
       const user = state.users.find((user) => user.id === userId);
+      const f_user = state.filteredUsers.find((user) => user.id === userId);
       if (user) {
         user.isSelected = isSelected;
+      }
+      if (f_user) {
+        f_user.isSelected = isSelected;
       }
       state.selectedUsers = state.users.filter((user) => user.isSelected);
       state.nSelected = state.users.filter((user) => user.isSelected).length;
