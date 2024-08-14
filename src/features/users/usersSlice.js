@@ -1,10 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 import users, { getRandomColor } from '../../fakeData';
 const initialState = {
-  users: users(),
+  users: users().map((user) => ({
+    ...user,
+    isSelected: false,
+  })),
   status: 'any',
   creationDate: '',
   nSelected: 0,
+  selectedUsers: [],
 };
 const usersSlice = createSlice({
   name: 'users',
@@ -22,6 +26,7 @@ const usersSlice = createSlice({
       if (user) {
         user.isSelected = isSelected;
       }
+      state.selectedUsers = state.users.filter((user) => user.isSelected);
       state.nSelected = state.users.filter((user) => user.isSelected).length;
     },
     unselectAll: (state) => {
@@ -29,6 +34,7 @@ const usersSlice = createSlice({
         user.isSelected = false;
       });
       state.nSelected = 0;
+      state.selectedUsers = [];
     },
     addUser: (state, action) => {
       const { fullName, userName, email, group, profile } = action.payload;
@@ -44,9 +50,28 @@ const usersSlice = createSlice({
       };
       state.users = [newUser, ...state.users];
     },
+    editUser: (state, action) => {
+      const { id, fullName, userName, email, group, profile } = action.payload;
+      const existingUserIndex = state.users.findIndex((user) => user.id === id);
+      if (existingUserIndex !== -1) {
+        state.users[existingUserIndex] = {
+          ...state.users[existingUserIndex],
+          name: fullName,
+          username: userName,
+          email: email,
+          group: group,
+          status: profile,
+        };
+      }
+    },
   },
 });
-
-export const { setStatus, setCreationDate, setSelected, unselectAll, addUser } =
-  usersSlice.actions;
+export const {
+  setStatus,
+  setCreationDate,
+  setSelected,
+  unselectAll,
+  addUser,
+  editUser,
+} = usersSlice.actions;
 export default usersSlice.reducer;

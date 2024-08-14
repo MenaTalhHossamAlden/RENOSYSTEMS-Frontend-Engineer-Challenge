@@ -1,16 +1,25 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { unselectAll } from '../features/users/usersSlice';
 import './Actions.css';
+import { openPopup } from '../features/popup/popupSlice';
+import { useRef } from 'react';
 const Actions = () => {
   const dispatch = useDispatch();
-  const nSelected = useSelector((state) => state.users.nSelected);
+  const { nSelected, selectedUsers } = useSelector((state) => state.users);
   return (
     <div className="actions">
       <div className="n-selected">
         <p>{nSelected} selected</p>
       </div>
       <div className="action">
-        <i className="fas fa-pencil"></i>
+        <i
+          className="fas fa-pencil"
+          onClick={() => {
+            if (selectedUsers.length != 1)
+              alert('you can only edit 1 user at a time');
+            else dispatch(openPopup({ type: 'edit', user: selectedUsers }));
+          }}
+        ></i>
       </div>
       <div className="action">
         <i className="fas fa-ban"></i>

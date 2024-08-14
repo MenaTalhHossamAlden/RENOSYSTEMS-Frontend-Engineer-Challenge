@@ -22,7 +22,7 @@ const UserManagement = () => {
             <div className="user-management-body">
               <div className="header">
                 <h4>User Management</h4>
-                <button onClick={() => dispatch(openPopup())}>
+                <button onClick={() => dispatch(openPopup({ type: 'new' }))}>
                   <i className="fas fa-plus"></i>Add New
                 </button>
               </div>

@@ -8,17 +8,18 @@ import {
   setGroup,
   setProfile,
   setUserName,
+  newOrEdit,
 } from '../features/popup/popupSlice';
-import { addUser } from '../features/users/usersSlice';
+import { addUser, editUser } from '../features/users/usersSlice';
 const Popup = () => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.popup);
-  const { fullName, userName, email, profile, group } = userData;
+  const { newOrEdit, fullName, userName, email, profile, group } = userData;
   return (
     <div className="popup">
       <div className="popup-window">
         <div className="header">
-          <p>Add New User</p>
+          {newOrEdit ? <p>Add New User</p> : <p>Edit User</p>}
           <i
             className="fas fa-times"
             onClick={() => dispatch(closePopup())}
@@ -95,9 +96,20 @@ const Popup = () => {
           <p onClick={() => dispatch(resetFields())}>Reset fields</p>
           <div>
             <button onClick={() => dispatch(closePopup())}>Cancel</button>
-            <button onClick={() => dispatch(addUser({ ...userData }))}>
-              Add User
-            </button>
+            {newOrEdit ? (
+              <button onClick={() => dispatch(addUser({ ...userData }))}>
+                Add User
+              </button>
+            ) : (
+              <button
+                onClick={() => {
+                  dispatch(editUser({ ...userData }));
+                  dispatch(closePopup());
+                }}
+              >
+                Edit User
+              </button>
+            )}
           </div>
         </div>
       </div>
