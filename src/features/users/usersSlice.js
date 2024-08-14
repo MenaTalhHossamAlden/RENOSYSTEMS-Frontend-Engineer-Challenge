@@ -51,6 +51,9 @@ const usersSlice = createSlice({
       state.users.forEach((user) => {
         user.isSelected = false;
       });
+      state.filteredUsers.forEach((user) => {
+        user.isSelected = false;
+      });
       state.nSelected = 0;
       state.selectedUsers = [];
     },
