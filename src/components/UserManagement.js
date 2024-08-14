@@ -1,3 +1,4 @@
+import Menu from './Menu';
 import Main from './Main';
 import { Container, Row, Col } from 'react-bootstrap';
 import './UserManagement.css';
@@ -13,10 +14,10 @@ const UserManagement = () => {
       {showPopup && <Popup />}
       <Container fluid className="user-management">
         <Row>
-          <Col md={3} className="bg-light col">
-            <div className="p-3">Sidebar or Details Panel</div>
+          <Col md={2} className="bg-light col">
+            <Menu />
           </Col>
-          <Col md={9} className="bg-light col">
+          <Col md={10} className="bg-light col">
             <Navbar />
             <div className="user-management-body">
               <div className="header">

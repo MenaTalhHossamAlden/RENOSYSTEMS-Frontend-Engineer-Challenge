@@ -44,7 +44,7 @@ const Navbar = () => {
               .map((n) => n[0])
               .join('')}
           </div>
-          <i class="fas fa-angle-down"></i>
+          <i className="fas fa-angle-down"></i>
         </div>
       </div>
     </div>
