@@ -18,7 +18,12 @@ const menuSlice = createSlice({
     toggleItem: (state, action) => {
       state[action.payload].show = !state[action.payload].show;
     },
-    // toggleSubItem: (state, action) => {},
+    toggleSubItem: (state, action) => {
+      Object.keys(state.User.subItems).forEach((item) => {
+        state.User.subItems[item] = false;
+      });
+      state.User.subItems[action.payload] = true;
+    },
   },
 });
 

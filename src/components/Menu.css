@@ -70,3 +70,14 @@
   background: #1a2642;
   border-left: 1px solid #818897;
 }
+
+.menu .clicked-item {
+  background: #08ac6c;
+  color: white;
+}
+
+.menu .clicked-subitem {
+  background: #28344c;
+  color: #08ac6c;
+  border-left: 1px solid #08ac6c;
+}

@@ -1,10 +1,11 @@
 import './Menu.css';
 import logo from '../assets/logo.png';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleItem } from '../features/menu/menuSlice';
+import { toggleItem, toggleSubItem } from '../features/menu/menuSlice';
 const Menu = () => {
   const dispatch = useDispatch();
   const { ATM, Business, User } = useSelector((state) => state.menu);
+  const { Users, Profiles, Groups } = User.subItems;
   return (
     <div className="menu">
       <img src={logo} alt="logo" />
@@ -66,13 +67,28 @@ const Menu = () => {
       </div>
       {User.show && (
         <>
-          <div className="settings-subitem">
+          <div
+            className={`settings-subitem ${Users ? 'clicked-subitem' : ''}`}
+            onClick={() => {
+              dispatch(toggleSubItem('Users'));
+            }}
+          >
             <p>Users</p>
           </div>
-          <div className="settings-subitem">
+          <div
+            className={`settings-subitem ${Profiles ? 'clicked-subitem' : ''}`}
+            onClick={() => {
+              dispatch(toggleSubItem('Profiles'));
+            }}
+          >
             <p>Profiles</p>
           </div>
-          <div className="settings-subitem">
+          <div
+            className={`settings-subitem ${Groups ? 'clicked-subitem' : ''}`}
+            onClick={() => {
+              dispatch(toggleSubItem('Groups'));
+            }}
+          >
             <p>Groups</p>
           </div>
         </>
