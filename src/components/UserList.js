@@ -26,11 +26,11 @@ const UserList = () => {
             />
             Name
           </th>
-          <th>Username</th>
-          <th>Email</th>
+          <th>User Name</th>
+          <th>Email Address</th>
           <th>Group</th>
           <th>Status</th>
-          <th>Created On</th>
+          <th>Created on</th>
         </tr>
       </thead>
       <tbody>
