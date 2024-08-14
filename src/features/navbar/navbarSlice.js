@@ -4,7 +4,7 @@ const initialState = {
   notifications: 10,
 };
 const navbarSlice = createSlice({
-  name: 'users',
+  name: 'navbar',
   initialState,
   reducers: {},
 });
