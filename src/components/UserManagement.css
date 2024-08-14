@@ -12,7 +12,9 @@ p {
 }
 
 .user-management {
-  letter-spacing: -1px;
+  letter-spacing: -0.5px;
+  font-size: 15px;
+  font-weight: 547;
 }
 
 .user-management .header {
