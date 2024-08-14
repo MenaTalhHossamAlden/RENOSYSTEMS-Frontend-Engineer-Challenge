@@ -19,8 +19,18 @@
   background-color: #f4f4f4;
 }
 
+.user-list .status select {
+  font-weight: bold;
+  outline: none;
+  border: none;
+  background: initial;
+}
 .user-list .status {
   font-weight: bold;
+}
+
+.user-list .fa-info-circle {
+  margin-left: 15px;
 }
 
 .user-list .name {

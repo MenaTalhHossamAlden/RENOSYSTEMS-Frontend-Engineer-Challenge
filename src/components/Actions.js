@@ -11,15 +11,15 @@ const Actions = () => {
       <div className="n-selected">
         <p>{nSelected} selected</p>
       </div>
-      <div className="action">
-        <i
-          className="fas fa-pencil"
-          onClick={() => {
-            if (selectedUsers.length != 1)
-              alert('you can only edit 1 user at a time');
-            else dispatch(openPopup({ type: 'edit', user: selectedUsers }));
-          }}
-        ></i>
+      <div
+        className="action"
+        onClick={() => {
+          if (selectedUsers.length != 1)
+            alert('you can only edit 1 user at a time');
+          else dispatch(openPopup({ type: 'edit', user: selectedUsers }));
+        }}
+      >
+        <i className="fas fa-pencil"></i>
       </div>
       <div className="action">
         <i className="fas fa-ban"></i>

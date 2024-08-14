@@ -67,7 +67,7 @@ const usersSlice = createSlice({
         email: email,
         group: group,
         status: profile,
-        createdOn: Date.now(),
+        createdOn: new Date(Date.now()).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
         color: getRandomColor(),
       };
       state.users = [newUser, ...state.users];
@@ -86,6 +86,38 @@ const usersSlice = createSlice({
           status: profile,
         };
       }
+      const existingFUserIndex = state.filteredUsers.findIndex(
+        (user) => user.id === id
+      );
+      if (existingFUserIndex !== -1) {
+        state.filteredUsers[existingFUserIndex] = {
+          ...state.filteredUsers[existingFUserIndex],
+          name: fullName,
+          username: userName,
+          email: email,
+          group: group,
+          status: profile,
+        };
+      }
+      state.selectedUsers[0] = {
+        ...state.selectedUsers[0],
+        name: fullName,
+        username: userName,
+        email: email,
+        group: group,
+        status: profile,
+      };
+    },
+    setUserStatus: (state, action) => {
+      const { id, status } = action.payload;
+      const user = state.users.find((user) => user.id === id);
+      const f_user = state.filteredUsers.find((user) => user.id === id);
+      if (user) {
+        user.status = status;
+      }
+      if (f_user) {
+        f_user.status = status;
+      }
     },
   },
 });
@@ -97,5 +129,6 @@ export const {
   addUser,
   editUser,
   setSearchTerm,
+  setUserStatus,
 } = usersSlice.actions;
 export default usersSlice.reducer;

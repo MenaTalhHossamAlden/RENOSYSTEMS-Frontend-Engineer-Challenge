@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './UserList.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSelected } from '../features/users/usersSlice';
+import { setSelected, setUserStatus } from '../features/users/usersSlice';
 const UserList = () => {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.users.filteredUsers);
@@ -65,7 +65,26 @@ const UserList = () => {
               <td>{user.username}</td>
               <td>{user.email}</td>
               <td>{user.group}</td>
-              <td className="status">{user.status}</td>
+              <td className="status">
+                {user.status == 'Locked' ? (
+                  <>
+                    Locked
+                    <i class="fas fa-info-circle"></i>
+                  </>
+                ) : (
+                  <select
+                    value={user.status}
+                    onChange={(e) =>
+                      dispatch(
+                        setUserStatus({ id: user.id, status: e.target.value })
+                      )
+                    }
+                  >
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                  </select>
+                )}
+              </td>
               <td>{user.createdOn}</td>
             </tr>
           );

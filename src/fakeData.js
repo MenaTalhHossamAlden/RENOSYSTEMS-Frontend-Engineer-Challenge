@@ -21,7 +21,13 @@ const generateFakeUsers = (numUsers = 10) => {
       email: faker.internet.email(),
       group: faker.helpers.arrayElement(['Office', 'Managers', 'Head Office']),
       status: faker.helpers.arrayElement(['Active', 'Inactive', 'Locked']),
-      createdOn: faker.date.past().toLocaleDateString(),
+      createdOn: faker.date
+        .past()
+        .toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric',
+        }),
       color: getRandomColor(),
     });
   }
