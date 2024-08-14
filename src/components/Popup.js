@@ -97,7 +97,10 @@ const Popup = () => {
           <div>
             <button onClick={() => dispatch(closePopup())}>Cancel</button>
             {newOrEdit ? (
-              <button onClick={() => dispatch(addUser({ ...userData }))}>
+              <button
+                type="submit"
+                onClick={() => dispatch(addUser({ ...userData }))}
+              >
                 Add User
               </button>
             ) : (

@@ -55,6 +55,7 @@ const usersSlice = createSlice({
       state.selectedUsers = [];
     },
     addUser: (state, action) => {
+      console.log(action.payload);
       const { fullName, userName, email, group, profile } = action.payload;
       const newUser = {
         id: Date.now(),
@@ -67,6 +68,7 @@ const usersSlice = createSlice({
         color: getRandomColor(),
       };
       state.users = [newUser, ...state.users];
+      state.filteredUsers = [newUser, ...state.filteredUsers];
     },
     editUser: (state, action) => {
       const { id, fullName, userName, email, group, profile } = action.payload;
