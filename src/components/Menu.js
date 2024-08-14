@@ -14,6 +14,13 @@ const Menu = () => {
           <i className="fas fa-search"></i>
         </span>
       </div>
+      <div className="dashboard">
+        <i class="fab fa-microsoft"></i>
+        <p>Dashboard</p>
+      </div>
+      <div className="settings">
+        <p>SETTINGS</p>
+      </div>
     </div>
   );
 };
