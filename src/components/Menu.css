@@ -48,3 +48,14 @@
   letter-spacing: 1px;
   font-weight: 600;
 }
+
+.menu .settings-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 20px 24px 20px;
+  color: #818897;
+  font-weight: 500;
+  font-size: 17px;
+}

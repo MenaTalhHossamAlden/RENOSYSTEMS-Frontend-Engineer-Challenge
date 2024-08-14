@@ -21,6 +21,21 @@ const Menu = () => {
       <div className="settings">
         <p>SETTINGS</p>
       </div>
+      <div className="settings-item">
+        <p>ATM Settings</p>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div className="settings-item">
+        <p>Business Setup</p>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div className="settings-item">
+        <p>User Management</p>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div className="settings-item">
+        <p>License Management</p>
+      </div>
     </div>
   );
 };
