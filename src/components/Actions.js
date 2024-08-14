@@ -34,13 +34,13 @@ const Actions = () => {
         <p>Assign to Group</p>
       </div>
       <div className="action">
-        <i class="fas fa-ellipsis-v"></i>
+        <i className="fas fa-ellipsis-v"></i>
       </div>
       <div className="un-selected" onClick={() => dispatch(unselectAll())}>
         <p>Unselect all</p>
       </div>
       <div className="action last-action">
-        <i class="fas fa-download"></i>
+        <i className="fas fa-download"></i>
       </div>
     </div>
   );

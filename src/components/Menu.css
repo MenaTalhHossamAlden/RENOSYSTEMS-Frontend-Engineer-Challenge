@@ -50,6 +50,10 @@
   font-weight: 600;
 }
 
+.menu .setting-menu {
+  width: 100%;
+}
+
 .menu .settings-item {
   display: flex;
   align-items: center;

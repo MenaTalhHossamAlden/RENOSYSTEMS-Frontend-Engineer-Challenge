@@ -24,8 +24,8 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="navbar-left">
-        <i class="fas fa-angle-left"></i>
-        <i class="fas fa-bars"></i>
+        <i className="fas fa-angle-left"></i>
+        <i className="fas fa-bars"></i>
         <p>Good Morning!</p>
         <p>{formattedDateWithSpace}</p>
         <p>{formattedTime}</p>
@@ -34,7 +34,7 @@ const Navbar = () => {
         <i className="far fa-question-circle"></i>
         <div className="notifications">
           <div className="count">{formatNumber()}</div>
-          <i class="fas fa-bell"></i>
+          <i className="fas fa-bell"></i>
         </div>
         <div className="curr-user">
           <p>{currUser}</p>

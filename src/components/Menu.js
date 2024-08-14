@@ -8,9 +8,7 @@ import {
 } from '../features/menu/menuSlice';
 const Menu = () => {
   const dispatch = useDispatch();
-  const { searchTerm, filtered } = useSelector(
-    (state) => state.menu
-  );
+  const { searchTerm, filtered } = useSelector((state) => state.menu);
   return (
     <div className="menu">
       <img src={logo} alt="logo" />
@@ -27,14 +25,14 @@ const Menu = () => {
         </span>
       </div>
       <div className="dashboard">
-        <i class="fab fa-microsoft"></i>
+        <i className="fab fa-microsoft"></i>
         <p>Dashboard</p>
       </div>
       <div className="settings">
         <p>SETTINGS</p>
       </div>
       {filtered.map((item) => (
-        <>
+        <div className="setting-menu" key={item.name}>
           <div
             className={`settings-item ${item.show ? 'clicked-item' : ''}`}
             onClick={() => {
@@ -52,6 +50,7 @@ const Menu = () => {
             item.subItems.map((subitem) =>
               item.show ? (
                 <div
+                  key={subitem.name}
                   className={`settings-subitem ${
                     subitem.show ? 'clicked-subitem' : ''
                   }`}
@@ -63,28 +62,8 @@ const Menu = () => {
                 </div>
               ) : null
             )}
-        </>
+        </div>
       ))}
-      {/* {User.show && (
-        <>
-          <div
-            className={`settings-subitem ${Profiles ? 'clicked-subitem' : ''}`}
-            onClick={() => {
-              dispatch(toggleSubItem('Profiles'));
-            }}
-          >
-            <p>Profiles</p>
-          </div>
-          <div
-            className={`settings-subitem ${Groups ? 'clicked-subitem' : ''}`}
-            onClick={() => {
-              dispatch(toggleSubItem('Groups'));
-            }}
-          >
-            <p>Groups</p>
-          </div>
-        </>
-      )} */}
       <div className="settings-item">
         <p>License Management</p>
       </div>

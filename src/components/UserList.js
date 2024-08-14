@@ -14,7 +14,7 @@ const UserList = () => {
             <input
               type="checkbox"
               className="head-checkbox"
-              checked
+              defaultChecked
               // onChange={() =>
               //   dispatch(
               //     setSelected({
@@ -69,7 +69,7 @@ const UserList = () => {
                 {user.status == 'Locked' ? (
                   <>
                     Locked
-                    <i class="fas fa-info-circle"></i>
+                    <i className="fas fa-info-circle"></i>
                   </>
                 ) : (
                   <select
