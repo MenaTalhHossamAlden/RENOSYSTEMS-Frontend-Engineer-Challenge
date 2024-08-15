@@ -122,6 +122,14 @@ const usersSlice = createSlice({
         f_user.status = status;
       }
     },
+    removeSelectedUsers: (state) => {
+      state.users = state.users.filter((user) => !user.isSelected);
+      state.filteredUsers = state.filteredUsers.filter(
+        (user) => !user.isSelected
+      );
+      state.selectedUsers = [];
+      state.nSelected = 0;
+    },
   },
 });
 export const {
@@ -133,5 +141,6 @@ export const {
   editUser,
   setSearchTerm,
   setUserStatus,
+  removeSelectedUsers,
 } = usersSlice.actions;
 export default usersSlice.reducer;

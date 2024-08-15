@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { unselectAll } from '../features/users/usersSlice';
+import { unselectAll, removeSelectedUsers } from '../features/users/usersSlice';
 import './Actions.css';
 import { openPopup } from '../features/popup/popupSlice';
-import { useRef } from 'react';
 const Actions = () => {
   const dispatch = useDispatch();
   const { nSelected, selectedUsers } = useSelector((state) => state.users);
@@ -21,7 +20,7 @@ const Actions = () => {
       >
         <i className="fas fa-pencil"></i>
       </div>
-      <div className="action">
+      <div className="action" onClick={() => dispatch(removeSelectedUsers())}>
         <i className="fas fa-ban"></i>
       </div>
       <div className="action">
