@@ -43,11 +43,10 @@ const Inputs = () => {
           value={status}
           onChange={(e) => dispatch(setStatus(e.target.value))}
         >
-          <option value="any" disabled>
-            Any
-          </option>
+          <option value="Any">Any</option>
           <option value="Active">Active</option>
           <option value="Inactive">Inactive</option>
+          <option value="Locked">Locked</option>
         </select>
       </div>
       <div className="field" id="creation-date">

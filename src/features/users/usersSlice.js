@@ -7,7 +7,7 @@ const usersWithSelected = users().map((user) => ({
 const initialState = {
   users: usersWithSelected,
   userName: '',
-  status: 'any',
+  status: 'Any',
   creationDate: '',
   nSelected: 0,
   selectedUsers: [],
@@ -15,13 +15,15 @@ const initialState = {
   filteredUsers: usersWithSelected,
 };
 const filter = (state) => {
-  if (!state.searchTerm && !state.userName) return state.users;
+  if (!state.searchTerm && !state.userName && state.status == 'Any')
+    return state.users;
   return state.users.filter(
     (user) =>
       user.name.toLowerCase().includes(state.userName.toLowerCase()) &&
       (user.name.toLowerCase().includes(state.searchTerm.toLowerCase()) ||
         user.username.toLowerCase().includes(state.searchTerm.toLowerCase()) ||
-        user.email.toLowerCase().includes(state.searchTerm.toLowerCase()))
+        user.email.toLowerCase().includes(state.searchTerm.toLowerCase())) &&
+      (state.status == 'Any' || user.status == state.status)
   );
 };
 const usersSlice = createSlice({
@@ -30,6 +32,7 @@ const usersSlice = createSlice({
   reducers: {
     setStatus: (state, action) => {
       state.status = action.payload;
+      state.filteredUsers = filter(state);
     },
     setUserName: (state, action) => {
       state.userName = action.payload;
