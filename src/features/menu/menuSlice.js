@@ -75,7 +75,6 @@ const menuSlice = createSlice({
           return null;
         })
         .filter((item) => item !== null);
-      console.log(state.filtered);
     },
   },
 });

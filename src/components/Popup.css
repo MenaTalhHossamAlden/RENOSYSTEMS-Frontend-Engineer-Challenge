@@ -37,9 +37,10 @@
 
 .popup .body .add-field {
   margin: 24px;
+  position: relative;
 }
 
-.popup .body .add-field p {
+.popup .body .add-field p:first-of-type {
   color: #28344d;
   font-weight: 700;
 }
@@ -81,4 +82,12 @@
   background: #00a86b;
   color: white;
   font-weight: 500;
+}
+
+.popup p.error {
+  color: red;
+  font-size: 10px;
+  font-weight: 500;
+  position: absolute;
+  
 }

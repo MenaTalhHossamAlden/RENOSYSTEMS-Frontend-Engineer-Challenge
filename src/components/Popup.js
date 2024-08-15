@@ -8,13 +8,25 @@ import {
   setGroup,
   setProfile,
   setUserName,
-  newOrEdit,
+  validateInputs,
 } from '../features/popup/popupSlice';
 import { addUser, editUser } from '../features/users/usersSlice';
 const Popup = () => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.popup);
-  const { newOrEdit, fullName, userName, email, profile, group } = userData;
+  const {
+    newOrEdit,
+    fullName,
+    userName,
+    email,
+    profile,
+    group,
+    nameErr,
+    userErr,
+    emailErr,
+    groupErr,
+    profileErr,
+  } = userData;
   return (
     <div className="popup">
       <div className="popup-window">
@@ -36,6 +48,7 @@ const Popup = () => {
               value={fullName}
               onChange={(e) => dispatch(setFullName(e.target.value))}
             />
+            {nameErr && <p className="error">Please fill out this field</p>}
           </div>
           <div className="add-field">
             <p>User Name</p>
@@ -47,6 +60,7 @@ const Popup = () => {
               value={userName}
               onChange={(e) => dispatch(setUserName(e.target.value))}
             />
+            {userErr && <p className="error">Please fill out this field</p>}
           </div>
           <div className="add-field">
             <p>Email Address</p>
@@ -58,6 +72,7 @@ const Popup = () => {
               value={email}
               onChange={(e) => dispatch(setEmail(e.target.value))}
             />
+            {emailErr && <p className="error">Please enter a valid email</p>}
           </div>
           <div className="add-field">
             <p>User Group</p>
@@ -74,6 +89,7 @@ const Popup = () => {
               <option value="Managers">Managers</option>
               <option value="Head Office">Head Office</option>
             </select>
+            {groupErr && <p className="error">Please choose a group</p>}
           </div>
           <div className="add-field">
             <p>Choose Profile</p>
@@ -90,6 +106,7 @@ const Popup = () => {
               <option value="Active">Active</option>
               <option value="Inactive">Inactive</option>
             </select>
+            {profileErr && <p className="error">Please choose a profile</p>}
           </div>
         </div>
         <div className="footer">
@@ -99,7 +116,12 @@ const Popup = () => {
             {newOrEdit ? (
               <button
                 type="submit"
-                onClick={() => dispatch(addUser({ ...userData }))}
+                onClick={() => {
+                  const isValid = dispatch(validateInputs()).payload;
+                  if (isValid) {
+                    dispatch(addUser({ ...userData }));
+                  }
+                }}
               >
                 Add User
               </button>

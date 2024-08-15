@@ -58,7 +58,6 @@ const usersSlice = createSlice({
       state.selectedUsers = [];
     },
     addUser: (state, action) => {
-      console.log(action.payload);
       const { fullName, userName, email, group, profile } = action.payload;
       const newUser = {
         id: Date.now(),
@@ -67,7 +66,11 @@ const usersSlice = createSlice({
         email: email,
         group: group,
         status: profile,
-        createdOn: new Date(Date.now()).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+        createdOn: new Date(Date.now()).toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric',
+        }),
         color: getRandomColor(),
       };
       state.users = [newUser, ...state.users];

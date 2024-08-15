@@ -8,6 +8,11 @@ const initialState = {
   group: 'Choose User Group',
   profile: 'Choose Profile',
   id: null,
+  nameErr: false,
+  userErr: false,
+  emailErr: false,
+  groupErr: false,
+  profileErr: false,
 };
 const popupSlice = createSlice({
   name: 'popup',
@@ -38,18 +43,49 @@ const popupSlice = createSlice({
     },
     setUserName: (state, action) => {
       state.userName = action.payload;
+      // Username validation
+      if (!state.userName.trim()) {
+        state.userErr = true;
+      } else {
+        state.userErr = false;
+      }
     },
     setEmail: (state, action) => {
       state.email = action.payload;
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(state.email)) {
+        state.emailErr = true;
+      } else {
+        state.emailErr = false;
+      }
     },
     setGroup: (state, action) => {
       state.group = action.payload;
+      // Group validation
+      if (state.group === 'Choose User Group') {
+        state.groupErr = true;
+      } else {
+        state.groupErr = false;
+      }
     },
     setProfile: (state, action) => {
       state.profile = action.payload;
+      // Profile validation
+      if (state.profile === 'Choose Profile') {
+        state.profileErr = true;
+      } else {
+        state.profileErr = false;
+      }
     },
     setFullName: (state, action) => {
       state.fullName = action.payload;
+      // Full Name validation
+      if (!state.fullName.trim()) {
+        state.nameErr = true;
+      } else {
+        state.nameErr = false;
+      }
     },
     resetFields: (state) => {
       state.fullName = '';
@@ -57,6 +93,35 @@ const popupSlice = createSlice({
       state.email = '';
       state.group = 'Choose User Group';
       state.profile = 'Choose Profile';
+    },
+    validateInputs: (state, action) => {
+      let isValid = true;
+
+      // Full Name validation
+      if (state.nameErr) {
+        isValid = false;
+      }
+
+      // Username validation
+      if (state.userErr) {
+        isValid = false;
+      }
+
+      // Email validation
+      if (state.emailErr) {
+        isValid = false;
+      }
+
+      // Group validation
+      if (state.groupErr) {
+        isValid = false;
+      }
+
+      // Profile validation
+      if (state.profile === 'Choose Profile') {
+        isValid = false;
+      }
+      action.payload = isValid;
     },
   },
 });
@@ -69,5 +134,6 @@ export const {
   setGroup,
   setEmail,
   resetFields,
+  validateInputs,
 } = popupSlice.actions;
 export default popupSlice.reducer;
