@@ -3,12 +3,13 @@ import {
   setCreationDate,
   setStatus,
   setSearchTerm,
+  setUserName,
 } from '../features/users/usersSlice';
 import './Inputs.css';
 import { useDispatch, useSelector } from 'react-redux';
 const Inputs = () => {
   const dispatch = useDispatch();
-  const { status, searchTerm, creationDate } = useSelector(
+  const { status, searchTerm, creationDate, userName } = useSelector(
     (state) => state.users
   );
   return (
@@ -26,7 +27,13 @@ const Inputs = () => {
         />
       </div>
       <div className="field" id="username">
-        <input type="text" className="field-input" placeholder="User Name" />
+        <input
+          type="text"
+          className="field-input"
+          placeholder="User Name"
+          value={userName}
+          onChange={(e) => dispatch(setUserName(e.target.value))}
+        />
       </div>
       <div className="field" id="status">
         <span>User Status</span>

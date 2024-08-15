@@ -6,12 +6,23 @@ const usersWithSelected = users().map((user) => ({
 }));
 const initialState = {
   users: usersWithSelected,
+  userName: '',
   status: 'any',
   creationDate: '',
   nSelected: 0,
   selectedUsers: [],
   searchTerm: '',
   filteredUsers: usersWithSelected,
+};
+const filter = (state) => {
+  if (!state.searchTerm && !state.userName) return state.users;
+  return state.users.filter(
+    (user) =>
+      user.name.toLowerCase().includes(state.userName.toLowerCase()) &&
+      (user.name.toLowerCase().includes(state.searchTerm.toLowerCase()) ||
+        user.username.toLowerCase().includes(state.searchTerm.toLowerCase()) ||
+        user.email.toLowerCase().includes(state.searchTerm.toLowerCase()))
+  );
 };
 const usersSlice = createSlice({
   name: 'users',
@@ -20,16 +31,13 @@ const usersSlice = createSlice({
     setStatus: (state, action) => {
       state.status = action.payload;
     },
+    setUserName: (state, action) => {
+      state.userName = action.payload;
+      state.filteredUsers = filter(state);
+    },
     setSearchTerm: (state, action) => {
       state.searchTerm = action.payload;
-      const searchTerm = action.payload;
-      if (!searchTerm) state.filteredUsers = state.users;
-      state.filteredUsers = state.users.filter(
-        (user) =>
-          user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          user.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          user.email.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+      state.filteredUsers = filter(state);
     },
     setCreationDate: (state, action) => {
       state.creationDate = action.payload;
@@ -142,5 +150,6 @@ export const {
   setSearchTerm,
   setUserStatus,
   removeSelectedUsers,
+  setUserName,
 } = usersSlice.actions;
 export default usersSlice.reducer;
