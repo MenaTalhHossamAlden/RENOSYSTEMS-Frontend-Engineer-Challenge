@@ -15,6 +15,7 @@ const initialState = {
   filteredUsers: usersWithSelected,
 };
 const filter = (state) => {
+  let formattedDate;
   if (
     !state.searchTerm &&
     !state.userName &&
@@ -22,9 +23,13 @@ const filter = (state) => {
     !state.creationDate
   )
     return state.users;
-  const date = new Date(state.creationDate);
-  const options = { year: 'numeric', month: 'short', day: 'numeric' };
-  const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
+  if (state.creationDate) {
+    const date = new Date(state.creationDate);
+    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    formattedDate = new Intl.DateTimeFormat('en-US', options).format(
+      date
+    );
+  }
   return state.users.filter(
     (user) =>
       user.name.toLowerCase().includes(state.userName.toLowerCase()) &&
