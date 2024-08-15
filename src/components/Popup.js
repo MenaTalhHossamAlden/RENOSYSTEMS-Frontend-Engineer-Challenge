@@ -128,8 +128,11 @@ const Popup = () => {
             ) : (
               <button
                 onClick={() => {
-                  dispatch(editUser({ ...userData }));
-                  dispatch(closePopup());
+                  const isValid = dispatch(validateInputs()).payload;
+                  if (isValid) {
+                    dispatch(editUser({ ...userData }));
+                    dispatch(closePopup());
+                  }
                 }}
               >
                 Edit User
