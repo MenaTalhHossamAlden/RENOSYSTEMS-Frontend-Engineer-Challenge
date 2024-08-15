@@ -26,9 +26,7 @@ const filter = (state) => {
   if (state.creationDate) {
     const date = new Date(state.creationDate);
     const options = { year: 'numeric', month: 'short', day: 'numeric' };
-    formattedDate = new Intl.DateTimeFormat('en-US', options).format(
-      date
-    );
+    formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
   }
   return state.users.filter(
     (user) =>
@@ -156,6 +154,20 @@ const usersSlice = createSlice({
       state.selectedUsers = [];
       state.nSelected = 0;
     },
+    lockSelectedUser: (state) => {
+      state.users = state.users.map((user) => {
+        if (user.isSelected) {
+          return { ...user, status: 'Locked' };
+        }
+        return user;
+      });
+      state.filteredUsers = state.filteredUsers.map((user) => {
+        if (user.isSelected) {
+          return { ...user, status: 'Locked' };
+        }
+        return user;
+      });
+    },
   },
 });
 export const {
@@ -169,5 +181,6 @@ export const {
   setUserStatus,
   removeSelectedUsers,
   setUserName,
+  lockSelectedUser,
 } = usersSlice.actions;
 export default usersSlice.reducer;
