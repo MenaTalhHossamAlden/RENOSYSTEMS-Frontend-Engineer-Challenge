@@ -15,15 +15,24 @@ const initialState = {
   filteredUsers: usersWithSelected,
 };
 const filter = (state) => {
-  if (!state.searchTerm && !state.userName && state.status == 'Any')
+  if (
+    !state.searchTerm &&
+    !state.userName &&
+    state.status == 'Any' &&
+    !state.creationDate
+  )
     return state.users;
+  const date = new Date(state.creationDate);
+  const options = { year: 'numeric', month: 'short', day: 'numeric' };
+  const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
   return state.users.filter(
     (user) =>
       user.name.toLowerCase().includes(state.userName.toLowerCase()) &&
       (user.name.toLowerCase().includes(state.searchTerm.toLowerCase()) ||
         user.username.toLowerCase().includes(state.searchTerm.toLowerCase()) ||
         user.email.toLowerCase().includes(state.searchTerm.toLowerCase())) &&
-      (state.status == 'Any' || user.status == state.status)
+      (state.status == 'Any' || user.status == state.status) &&
+      (!state.creationDate || formattedDate == user.createdOn)
   );
 };
 const usersSlice = createSlice({
@@ -44,6 +53,7 @@ const usersSlice = createSlice({
     },
     setCreationDate: (state, action) => {
       state.creationDate = action.payload;
+      state.filteredUsers = filter(state);
     },
     setSelected: (state, action) => {
       const { userId, isSelected } = action.payload;
